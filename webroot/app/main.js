@@ -17,6 +17,7 @@ requirejs.config({
             exports: 'jQuery'
         }
     },
+    waitSeconds: 0,
     urlArgs: "bust=" +  (new Date()).getTime()
 });
 
