@@ -6,7 +6,7 @@ define(['durandal/app', 'durandal/system', 'knockout', 'plugins/http', 'marked',
             var that = this;
 
             qs = {};
-            http.get(config.base_url + "article/list", qs).then(function(response) {
+            http.jsonp(config.base_url + "article/list", qs).then(function(response) {
                 for (var idx = 0; idx < response.articles.length; idx ++) {
                     var article = response.articles[idx];
                     article.content = marked(article.content);

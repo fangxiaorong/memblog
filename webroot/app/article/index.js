@@ -7,7 +7,7 @@ define(['durandal/app', 'durandal/system', 'knockout', 'plugins/http', 'marked',
             var that = this;
 
             qs = {'id': id};
-            return http.get(config.base_url + "article/detail", qs).then(function(response) {
+            return http.jsonp(config.base_url + "article/detail", qs).then(function(response) {
                 that.title(response.title);
                 that.content(marked(response.content));
             });

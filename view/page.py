@@ -21,23 +21,21 @@ class ProjectGlanceHandler(BaseHandler):
 # 文章列表
 class ArticleListHandler(BaseHandler):
     def get(self):
-        self.set_header("Content-Type", "text/json")
         articles = list(self.db.get_all('blog'))
         if articles:
             for article in articles:
                 article['content'] = u"\n".join(article['content'].split('\n')[0:20])
-        self.write(u'{"articles":[%s]}' % self.serialize(articles, many=True))
+        self.write_jsonp(u'{"articles":[%s]}' % self.serialize(articles, many=True))
 
 # 文章内容
 class ArticleDetailHandler(BaseHandler):
     def get(self):
         article_id = self.get_query_argument('id', None)
-        self.set_header("Content-Type", "text/json")
         if not article_id:
             self.custom_error("xxxxx")
         else:
             article = self.db.get_object('blog', article_id)
-            self.write(self.serialize(article))
+            self.write_jsonp(self.serialize(article))
 
 # 首页
 class AuthLoginHandler(BaseHandler):

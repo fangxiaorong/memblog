@@ -30,3 +30,6 @@ class BaseHandler(tornado.web.RequestHandler):
             self.write(self.serialize(error))
         raise tornado.web.Finish()
 
+    def write_jsonp(self, data):
+        callback_name = self.get_query_argument('callback')
+        self.write(u'%s(%s)' % (callback_name, data))
