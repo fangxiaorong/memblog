@@ -18,13 +18,13 @@ class Application(tornado.web.Application):
     def __init__(self):
         #这里就是url对应的控制器，下面分别对应一个类，来处理里面的逻辑
         handlers = [
-            (r"/", HomeHandler),
-            (r"/project/list", ProjectListHandler),
-            (r"/project/glance", ProjectGlanceHandler),
-            (r"/article/list", ArticleListHandler),
-            (r"/article/detail", ArticleDetailHandler),
-            (r"/auth/login", AuthLoginHandler),
-            (r"/auth/logout", AuthLogoutHandler),
+            (r"/port/", HomeHandler),
+            (r"/port/project/list", ProjectListHandler),
+            (r"/port/project/glance", ProjectGlanceHandler),
+            (r"/port/article/list", ArticleListHandler),
+            (r"/port/article/detail", ArticleDetailHandler),
+            (r"/port/auth/login", AuthLoginHandler),
+            (r"/port/auth/logout", AuthLogoutHandler),
         ]
         
         #然后调用tornado.web.Application类的__init__函数加载进来
